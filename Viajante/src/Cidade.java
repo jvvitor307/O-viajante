@@ -1,6 +1,7 @@
 public  class Cidade{
     private String nome;
     private int poderCidade;
+    
 
     
     public Cidade(String nome, int poderCidade) {
