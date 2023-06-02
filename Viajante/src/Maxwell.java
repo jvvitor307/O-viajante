@@ -55,12 +55,12 @@ public class Maxwell  {
         }
         verificarVida();
     }
-    private void verificarVida() {
+    private boolean verificarVida() {
         if(this.getVivo() == false){
             System.out.println("Você Morreu!"); 
             
 
-        }
+        }return this.getVivo();
 
     }
 
