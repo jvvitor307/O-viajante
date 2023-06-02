@@ -1,9 +1,9 @@
-public class PersonagemPrincipal extends Personagem {
+public class Maxwell extends Personagem {
     private int joiaDoPoder;
     private int moedaTransporte;
 
     
-    public PersonagemPrincipal(String nome, int joiaDoPoder) {
+    public Maxwell(String nome, int joiaDoPoder) {
         super(nome);
         this.joiaDoPoder = joiaDoPoder;
         this.moedaTransporte = 3;

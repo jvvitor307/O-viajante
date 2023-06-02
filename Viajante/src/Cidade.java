@@ -1,4 +1,4 @@
-public abstract class Cidade{
+public  class Cidade{
     private String nome;
     private int poderCidade;
 
