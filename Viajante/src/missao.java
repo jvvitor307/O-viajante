@@ -42,7 +42,7 @@ public class missao {
     }
     public void concluirMissao(Maxwell maxx){
         maxx.setMoedaTransporte(maxx.getMoedaTransporte()+ premioTerminarF);
-        maxx.getJoiaDoPoder(maxx.getJoiaDoPoder()+ premioTerminar);
+        maxx.setJoiaDoPoder(maxx.getJoiaDoPoder()+ premioTerminarS);
     }
     
 }
