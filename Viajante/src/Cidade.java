@@ -5,9 +5,10 @@ public  class Cidade{
     
 
     
-    public Cidade(String nome, int poderCidade) {
+    public Cidade(String nome, int poderCidade, missao missaoCidade) {
         this.nome = nome;
         this.poderCidade = poderCidade;
+        this.missaoCidade = this.missaoCidade;
 
     }
     public String getNome() {
