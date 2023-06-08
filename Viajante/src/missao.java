@@ -61,7 +61,7 @@ public class missao {
     }
     public void abandonarmissao(Maxwell maxx){
         maxx.setMissao(null);
-        maxx.setMissaoAndamento(false);
+        setAceitarMissao(false);
     }
     
 }
