@@ -1,15 +1,20 @@
+import java.util.ArrayList;
+import java.util.List;
 public  class Cidade{
     private String nome;
     private int poderCidade;
     private missao missaoCidade;
-    
-
+    private List<Caminho> estrada;
     
     public Cidade(String nome, int poderCidade, missao missaoCidade) {
         this.nome = nome;
         this.poderCidade = poderCidade;
         this.missaoCidade = missaoCidade;
-
+        this.estrada = new ArrayList<>();
+    }
+    public void addEstrada(Cidade destino, int custo){
+        Caminho caminho = new Caminho(destino, custo);
+        estrada.add(caminho);
     }
     public String getNome() {
         return nome;
