@@ -47,8 +47,8 @@ public class Maxwell  {
         this.poderAtual = poderAtual;
     }
 
-    public void AtualizarLimiar(int cidadeAtual){
-        this.poderAtual = this.poderAtual + this.cidadeAtual.getPoderCidade(); 
+    public void AtualizarLimiar(Cidade cidadeAtual){
+        this.poderAtual = this.poderAtual + this.cidadeAtual.getPoderCidade() + 1; 
         if(this.poderAtual<0){
             this.joiaDoPoder =0;
         }
@@ -56,14 +56,9 @@ public class Maxwell  {
             this.vivo = false;
 
         }
-        verificarVida();
+        
     }
-    private boolean verificarVida() {
-        if(this.getVivo() == false){
-            System.out.println("Você Morreu!"); 
-        }return true;
-
-    }
+    
     
     public missao getMissao() {
         return missao;

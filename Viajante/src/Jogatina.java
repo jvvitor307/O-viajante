@@ -11,6 +11,7 @@ public class Jogatina {
         while (true){
             System.out.println("Você está na cidade: " + max.getCidadeAtual());
             System.out.println("Moedas de Transporte Disponiveis: " + max.getMoedaTransporte());
+            System.out.println("Joia do Poder: " + max.getPoderAtual());
 
             List<Caminho> estrada = max.getCidadeAtual().getEstrada();
             if(estrada.isEmpty()){
@@ -44,6 +45,11 @@ public class Jogatina {
             // Viajar para a cidade escolhida
             max.setCidadeAtual(estradaEscolhida.getDestino());
             max.setMoedaTransporte(max.getMoedaTransporte() - estradaEscolhida.getCusto());
+            max.AtualizarLimiar(max.getCidadeAtual());
+            if(max.getVivo() == false){
+                break;
+            }
+
             
             System.out.println("Viajando para a cidade " + max.getCidadeAtual().getNome());
             System.out.println("Custo da viagem: " + estradaEscolhida.getCusto());
