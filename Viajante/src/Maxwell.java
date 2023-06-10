@@ -4,7 +4,6 @@ public class Maxwell  {
     private Cidade cidadeAtual;
     private int poderAtual;
     private boolean vivo;
-    private boolean missaoAndamento;
     private missao missao;
 
     
@@ -14,7 +13,7 @@ public class Maxwell  {
         this.moedaTransporte = 3;
         this.cidadeAtual = cidadeAtual;
         this.vivo = true;
-        this.missaoAndamento = false;
+
     }
     public int getJoiaDoPoder() {
         return joiaDoPoder;
@@ -64,12 +63,7 @@ public class Maxwell  {
         }return true;
 
     }
-    public boolean getMissaoAndamento() {
-        return missaoAndamento;
-    }
-    public void setMissaoAndamento(boolean missaoAndamento) {
-        this.missaoAndamento = missaoAndamento;
-    }
+    
     public missao getMissao() {
         return missao;
     }
