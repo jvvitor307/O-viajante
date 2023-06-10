@@ -61,9 +61,7 @@ public class Maxwell  {
     private boolean verificarVida() {
         if(this.getVivo() == false){
             System.out.println("Você Morreu!"); 
-            
-
-        }return this.getVivo();
+        }return true;
 
     }
     public boolean getMissaoAndamento() {

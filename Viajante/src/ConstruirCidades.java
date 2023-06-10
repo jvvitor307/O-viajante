@@ -1,6 +1,5 @@
 public class ConstruirCidades {
     private Construirmissao missao;
-    
 
     Cidade Ubud = new Cidade("Ubud", 0, null);
     Cidade KingdomofLegmod = new Cidade("Kingdom of Legmod", 2, null);
@@ -18,7 +17,6 @@ public class ConstruirCidades {
     Cidade ChandirSultanate = new Cidade("Chandir Sultanate", 1, null);
     Cidade Bun = new Cidade("Bun", 5, null);
     Cidade PrincipalityofKasya = new Cidade("Principality of Kasya", 7, null);
-    
-    
-    
+    Cidade Nargumun = new Cidade("Nargumun", 0, null);
+
 }
