@@ -12,6 +12,12 @@ public  class Cidade{
         this.missaoCidade = missaoCidade;
         this.estrada = new ArrayList<>();
     }
+    public List<Caminho> getEstrada() {
+        return estrada;
+    }
+    public void setEstrada(List<Caminho> estrada) {
+        this.estrada = estrada;
+    }
     public void addEstrada(Cidade destino, int custo){
         Caminho caminho = new Caminho(destino, custo);
         estrada.add(caminho);

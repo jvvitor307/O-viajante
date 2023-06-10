@@ -6,6 +6,7 @@ public class Maxwell  {
     private boolean vivo;
     private missao missao;
 
+
     
     public Maxwell( Cidade cidadeAtual) {
         this.joiaDoPoder = 7;
