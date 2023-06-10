@@ -25,7 +25,7 @@ public class missao {
     public void setMissao(String missao) {
         this.missao = missao;
     }
-    public boolean isAceitarMissao() {
+    public boolean getAceitarMissao() {
         return aceitarMissao;
     }
     public void setAceitarMissao(boolean aceitarMissao) {
@@ -47,8 +47,10 @@ public class missao {
         this.premioTerminarS = premioTerminarS;
     }
     public void aceitarMissao(Maxwell maxx){
-        this.aceitarMissao = true;
+        this.setAceitarMissao(true);
+        maxx.setMissao(maxx.getCidadeAtual().getMissaoCidade());
         maxx.setMoedaTransporte(maxx.getMoedaTransporte()+ premioAceitar);
+
     }
     public void concluirMissao(Maxwell maxx){
         maxx.setMoedaTransporte(maxx.getMoedaTransporte()+ premioTerminarF);

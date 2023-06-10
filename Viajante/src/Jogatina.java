@@ -50,11 +50,53 @@ public class Jogatina {
                 break;
             }
 
-            
             System.out.println("Viajando para a cidade " + max.getCidadeAtual().getNome());
             System.out.println("Custo da viagem: " + estradaEscolhida.getCusto());
             System.out.println();
 
+            // MISSÃO
+
+            max.getMissao().verificarmissao(max);
+            
+
+            if(max.getMissao().getAceitarMissao() == true){
+                System.out.println("Deseja abandonar Missão Atual? 1/SIM -- 2/NÃO");
+                escolha = input.nextInt();
+                if(escolha == 1){
+                    max.getMissao().abandonarmissao(max);
+                    if(max.getCidadeAtual().getMissaoCidade() != null){
+                System.out.println(max.getCidadeAtual().getMissaoCidade().getMissao());
+                System.out.println("1- ACEITAR MISSÃO");
+                System.out.println("2- RECUSAR MISSÃO");
+                escolha = input.nextInt();
+                if(escolha == 1){
+                    max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
+                }
+                else{
+                    continue;
+                }
+            }
+
+                }
+
+                
+            }
+            else{
+                if(max.getCidadeAtual().getMissaoCidade() != null){
+                System.out.println(max.getCidadeAtual().getMissaoCidade().getMissao());
+                System.out.println("1- ACEITAR MISSÃO");
+                System.out.println("2- RECUSAR MISSÃO");
+                escolha = input.nextInt();
+                if(escolha == 1){
+                    max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
+                }
+                else{
+                    continue;
+                }
+            }
+
+
+            }
             
 
 
