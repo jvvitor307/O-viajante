@@ -54,7 +54,9 @@ public class missao {
     }
     public void concluirMissao(Maxwell maxx){
         maxx.setMoedaTransporte(maxx.getMoedaTransporte()+ premioTerminarF);
-        maxx.setJoiaDoPoder(maxx.getJoiaDoPoder()+ premioTerminarS);
+        maxx.setJoiaDoPoder(maxx.getJoiaDoPoder() + premioTerminarS);
+        maxx.setMissao(null);
+        
     }
     public void verificarmissao(Maxwell maxx){
         if(cidadeFinal == maxx.getCidadeAtual()){

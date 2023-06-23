@@ -48,7 +48,7 @@ public class Maxwell  {
     }
 
     public void AtualizarLimiar(Cidade cidadeAtual){
-        this.poderAtual = this.poderAtual + this.cidadeAtual.getPoderCidade() + 1; 
+        this.poderAtual = this.poderAtual + this.cidadeAtual.getPoderCidade(); 
         if(this.poderAtual<0){
             this.joiaDoPoder =0;
         }
@@ -57,6 +57,11 @@ public class Maxwell  {
 
         }
         
+    }
+    public void verificarPoderAtual(Maxwell maxx){
+        if(maxx.getPoderAtual() <= 0){
+            maxx.setPoderAtual(0);
+        }
     }
     
     
