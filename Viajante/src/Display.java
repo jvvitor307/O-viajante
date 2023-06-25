@@ -14,7 +14,9 @@ public class Display {
     public Display(Maxwell max) {
     }
     public void displayPrincipal(Maxwell max) {
+        System.out.println("\u001B[31m \u001B[31m");
         System.out.println("Você está na cidade: " + max.getCidadeAtual().getNome());
+        System.out.println("\u001B[37m \u001B[37m");
         System.out.println("Moedas de Transporte Disponiveis: " + max.getMoedaTransporte());
         System.out.println("Poder atual: " + max.getPoderAtual());
         System.out.println("Limiar da joia: " + max.getJoiaDoPoder());

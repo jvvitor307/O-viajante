@@ -127,6 +127,7 @@ public class Jogatina  {
         String escolhaM;
         boolean contain = false;
         Verificacoes verificacoes = new Verificacoes();
+        Mercador mercador = new Mercador();
 
 
         while (true){
@@ -205,7 +206,9 @@ public class Jogatina  {
                 else if(escolhaint == null){
                     System.out.println("digite um numero valido");
                 }
+                
             }
+            
 
             //Abandonar Missão
             else if(escolhaM.equals("AM") && contain == true){
@@ -220,6 +223,10 @@ public class Jogatina  {
             }
 
             // Conversa com Mercador
+            else if(escolhaM.equals("CM") && contain == true){
+                mercador.conversaMercador(max);
+            }
+
 
               
             //inserir conversa do mercador
@@ -228,6 +235,8 @@ public class Jogatina  {
                 System.out.println("Você saiu do jogo!");
                 break;
             }
+            
         }
     }
+    
 }

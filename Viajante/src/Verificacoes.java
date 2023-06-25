@@ -1,3 +1,4 @@
+import java.io.IOException;
 
 public class Verificacoes {
     boolean contain = false;
@@ -22,5 +23,6 @@ public class Verificacoes {
         }
         return escolhaint;
     }
+
 
 }
