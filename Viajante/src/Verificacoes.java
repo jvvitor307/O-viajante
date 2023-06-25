@@ -19,7 +19,6 @@ public class Verificacoes {
             escolhaint = Integer.parseInt(escolha);
         } catch (NumberFormatException e) {
             // A conversão falhou
-            System.out.println("Escolha um valor valido");
         }
         return escolhaint;
     }

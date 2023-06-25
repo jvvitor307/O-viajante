@@ -238,8 +238,11 @@ public class Jogatina  {
 
               
             //inserir conversa do mercador
-
+            else if(escolhaM.equals("SAIR") && contain == true){
+                contain = false;
+                System.out.println("Você saiu do jogo!");
+                break;
+            }
         }
-        System.out.println("Fim");
     }
 }
