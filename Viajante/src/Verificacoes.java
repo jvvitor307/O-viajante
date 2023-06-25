@@ -1,7 +1,7 @@
 
 public class Verificacoes {
     boolean contain = false;
-    int escolhaint;
+    Integer escolhaint;
     public Verificacoes() {
     }
     public boolean contain(String g, String[] escolhas){
@@ -14,9 +14,9 @@ public class Verificacoes {
         return contain;
     }
 
-    public int verificaEscolhaInt(String escolha){
+    public Integer verificaEscolhaInt(String escolha){
         try {
-            escolhaint = Integer.parseInt(escolha);
+            escolhaint = Integer.valueOf(escolha);
         } catch (NumberFormatException e) {
             // A conversão falhou
         }

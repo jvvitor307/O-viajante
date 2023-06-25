@@ -1,5 +1,11 @@
+import java.util.List;
+import java.util.Scanner;
+
 public class Display {
-    
+
+    Scanner input = new Scanner(System.in);
+    String escolhaMi;
+
     String[] menu = {"V", "CM", "M", "AM", "SAIR"};
     String[] menuB = {"V", "CM", "SAIR"};
     String[] menuCCM = {"V", "CM", "M", "SAIR"};
@@ -63,8 +69,42 @@ public class Display {
             }
         }
     }   
-    public void abandonarmissao(){
+    public void abandonarmissao( Maxwell max){
+        System.out.println("Deseja abandonar Missão Atual? 1/SIM -- 2/NÃO");
+        escolhaMi = input.nextLine();
+        if(escolhaMi == "1"){
+            max.getMissao().abandonarmissao(max);
+        }
 
+    }
+    public void aceitarMissao( Maxwell max){
+        System.out.println(max.getCidadeAtual().getMissaoCidade().getMissao());
+        System.out.println("1- ACEITAR MISSÃO");
+        System.out.println("2- RECUSAR MISSÃO");
+        escolhaMi = input.nextLine();
+        if(escolhaMi == "1"){
+            max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
+            System.out.println("Você aceitou a missão!");
+        }
+        else{
+            System.out.println("Você recusou a missão!");
+        }
+    }
+
+    public void cidadesDisponiveis(List<Caminho> estrada){
+        System.out.println("Cidades Disponíveis: ");
+        for(int i = 0; i < estrada.size(); i++){
+            Caminho caminho = estrada.get(i);
+            System.out.println((i+1)+ ". Cidade " + caminho.getDestino().getNome() + "(Custo: " + caminho.getCusto() + ")" + "(Poder: " + caminho.getDestino().getPoderCidade() + ")"  );
+        }
+        System.out.println("Escolha uma cidade: ");
+    }
+
+    public void mostraViagem(Maxwell max, Caminho estradaEscolhida){
+        System.out.println("Viajando para a cidade " + max.getCidadeAtual().getNome());
+        System.out.println("Custo da viagem: " + estradaEscolhida.getCusto());
+        max.verificarPoderAtual(max);
+        System.out.println();
     }
 
 }
