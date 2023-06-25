@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Scanner;
 
-public class Jogatina {
+public class Jogatina  {
     public void jogarJogo(){
         Cidade Ubud = new Cidade("Ubud", 0, null);
         Cidade KingdomofLegmod = new Cidade("Kingdom of Legmod", 2, null);
@@ -119,16 +119,22 @@ public class Jogatina {
         //fronteiras principality of kasya
         PrincipalityofKasya.addEstrada(ChandirSultanate, 1);
 
+
+        Scanner input = new Scanner(System.in);
         Maxwell max = new Maxwell(Ubud);
+        Display display = new Display(max);
+        int escolhaMi;
+        int escolhaint;
+        String escolhaM;
+        boolean contain = false;
+        Verificacoes verificacoes = new Verificacoes();
 
 
         while (true){
-            System.out.println("Você está na cidade: " + max.getCidadeAtual().getNome());
-            System.out.println("Moedas de Transporte Disponiveis: " + max.getMoedaTransporte());
-            System.out.println("Poder atual: " + max.getPoderAtual());
-            System.out.println("Limiar da joia: " + max.getJoiaDoPoder());
 
             List<Caminho> estrada = max.getCidadeAtual().getEstrada();
+
+            //verifica se o jogador chegou em Nargumun
             if(estrada.isEmpty()){
                 if(max.getMoedaTransporte()>=10){
                     System.out.println("Parabens, você se tornou o Rei de Nargumun!");
@@ -142,94 +148,98 @@ public class Jogatina {
                     System.out.println("você se tornou um servo da coroa!");
                     break;
                 }
-                
-            }
-            System.out.println("Cidades Disponíveis: ");
-            for(int i = 0; i < estrada.size(); i++){
-                Caminho caminho = estrada.get(i);
-                System.out.println((i+1)+ ". Cidade " + caminho.getDestino().getNome() + "(Custo: " + caminho.getCusto() + ")" + "(Poder: " + caminho.getDestino().getPoderCidade() + ")"  );
-
-            }
-            Scanner input = new Scanner(System.in);
-            int escolha = input.nextInt();
-            
-            // Conversa com Mercador
-
-              if (escolha < 1 || escolha > estrada.size()) {
-                System.out.println("Escolha inválida");
-                continue;
-              //inserir conversa do mercador
-            }
-             Caminho estradaEscolhida = estrada.get(escolha - 1);
-
-              // Verificar se o jogador possui dinheiro suficiente para viajar
-            if (max.getMoedaTransporte() < estradaEscolhida.getCusto()) {
-                System.out.println("Você não possui dinheiro suficiente para viajar para a cidade " + estradaEscolhida.getDestino().getNome());
-                System.out.println("Fim de jogo!");
-                break;
-            }
-            // Viajar para a cidade escolhida
-            max.setCidadeAtual(estradaEscolhida.getDestino());
-            max.setMoedaTransporte(max.getMoedaTransporte() - estradaEscolhida.getCusto());
-            max.AtualizarLimiar(max.getCidadeAtual());
-            if(max.getVivo() == false){
-                break;
             }
 
-            System.out.println("Viajando para a cidade " + max.getCidadeAtual().getNome());
-            System.out.println("Custo da viagem: " + estradaEscolhida.getCusto());
-            max.verificarPoderAtual(max);
-            System.out.println();
-
-            // MISSÃO
+            //Verifica se o jogador pode concluir uma missão
             if(max.getMissao() != null){
                max.getMissao().verificarmissao(max); 
             }
 
-            if(max.getMissao()!=null){
-                if(max.getMissao().getAceitarMissao() == true){
-                    System.out.println("Deseja abandonar Missão Atual? 1/SIM -- 2/NÃO");
-                    escolha = input.nextInt();
-                    if(escolha == 1){
-                        max.getMissao().abandonarmissao(max);
-                        if(max.getCidadeAtual().getMissaoCidade() != null){
-                    System.out.println(max.getCidadeAtual().getMissaoCidade().getMissao());
-                    System.out.println("1- ACEITAR MISSÃO");
-                    System.out.println("2- RECUSAR MISSÃO");
-                    escolha = input.nextInt();
-                    if(escolha == 1){
-                        max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
-                    }
-                    else{
-                        continue;
-                    }
+            //Mostra o menu principal
+            display.displayPrincipal(max);
+            
+            //Mostra as opções de menu daquela cidade
+            String[] escolhas = display.displayMenu(max);
+            
+            System.out.println("Escolha uma das opções:");
+
+            escolhaM = input.nextLine();
+
+            //Verifica se a escolha é válida
+            contain = verificacoes.contain(escolhaM, escolhas);
+            // Viajar para outra cidade
+            if (escolhaM.equals("V") && contain == true) {
+                contain = false;
+                System.out.println("Cidades Disponíveis: ");
+                for(int i = 0; i < estrada.size(); i++){
+                    Caminho caminho = estrada.get(i);
+                    System.out.println((i+1)+ ". Cidade " + caminho.getDestino().getNome() + "(Custo: " + caminho.getCusto() + ")" + "(Poder: " + caminho.getDestino().getPoderCidade() + ")"  );
+                }
+                System.out.println("Escolha uma cidade: ");
+                String escolha = input.nextLine();
+                escolhaint = verificacoes.verificaEscolhaInt(escolha);
+
+                
+                if (escolhaint < 1 || escolhaint > estrada.size()) {
+                System.out.println("Escolha inválida");
+                continue;
+                }
+                Caminho estradaEscolhida = estrada.get(escolhaint - 1);
+
+                // Verificar se o jogador possui dinheiro suficiente para viajar
+                if (max.getMoedaTransporte() < estradaEscolhida.getCusto()) {
+                    System.out.println("Você não possui dinheiro suficiente para viajar para a cidade " + estradaEscolhida.getDestino().getNome());
+                    System.out.println("Fim de jogo!");
+                    break;
+                }
+                // Viajar para a cidade escolhida
+                max.setCidadeAtual(estradaEscolhida.getDestino());
+                max.setMoedaTransporte(max.getMoedaTransporte() - estradaEscolhida.getCusto());
+                max.AtualizarLimiar(max.getCidadeAtual());
+                if(max.getVivo() == false){
+                    break;
                 }
 
-                    }
+                System.out.println("Viajando para a cidade " + max.getCidadeAtual().getNome());
+                System.out.println("Custo da viagem: " + estradaEscolhida.getCusto());
+                max.verificarPoderAtual(max);
+                System.out.println();
+            }
 
-                    
+            //Abandonar Missão
+               
+            else if(escolhaM.equals("AM") && contain == true){
+                contain = false;
+                System.out.println("Deseja abandonar Missão Atual? 1/SIM -- 2/NÃO");
+                escolhaMi = input.nextInt();
+                if(escolhaMi == 1){
+                    max.getMissao().abandonarmissao(max);
                 }
             }
-            else{
-                if(max.getCidadeAtual().getMissaoCidade() != null){
+
+            //Aceitar missão 
+            else if(escolhaM.equals("M") && contain == true){
+                contain = false;
                 System.out.println(max.getCidadeAtual().getMissaoCidade().getMissao());
                 System.out.println("1- ACEITAR MISSÃO");
                 System.out.println("2- RECUSAR MISSÃO");
-                escolha = input.nextInt();
-                if(escolha == 1){
+                escolhaMi = input.nextInt();
+                if(escolhaMi == 1){
                     max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
+                    System.out.println("Você aceitou a missão!");
                 }
                 else{
-                    continue;
+                    System.out.println("Você recusou a missão!");
                 }
+                
             }
 
+            // Conversa com Mercador
 
-            }
+              
+            //inserir conversa do mercador
 
         }
         System.out.println("Fim");
-
-
     }
 }
