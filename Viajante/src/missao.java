@@ -5,8 +5,18 @@ public class missao {
     private boolean aceitarMissao;
     private boolean missaoConcluida;
     private int premioAceitar;
-    private int premioTerminarF;
-    private int premioTerminarS;
+    private int premioMoedaTransporte;
+    private int premioLimiar;
+    
+    public int getPremioAceitar() {
+        return premioAceitar;
+    }
+    public int getPremioMoedaTransporte() {
+        return premioMoedaTransporte;
+    }
+    public int getPremioLimiar() {
+        return premioLimiar;
+    }
     public Cidade getMissaodeverdade() {
         return cidadeFinal;
     }
@@ -37,14 +47,14 @@ public class missao {
     public void setMissaoConcluida(boolean missaoConcluida) {
         this.missaoConcluida = missaoConcluida;
     }
-    public missao(Cidade cidadeorigem, String missao, Cidade cidadeFinal, int premioAceitar, int premioTerminarF,
-            int premioTerminarS) {
+    public missao(Cidade cidadeorigem, String missao, Cidade cidadeFinal, int premioAceitar, int premioMoedaTransporte,
+            int premioLimiar) {
         this.cidadeorigem = cidadeorigem;
         this.missao = missao;
         this.cidadeFinal = cidadeFinal;
         this.premioAceitar = premioAceitar;
-        this.premioTerminarF = premioTerminarF;
-        this.premioTerminarS = premioTerminarS;
+        this.premioMoedaTransporte = premioMoedaTransporte;
+        this.premioLimiar = premioLimiar;
     }
     public void aceitarMissao(Maxwell maxx){
         this.setAceitarMissao(true);
@@ -53,8 +63,8 @@ public class missao {
 
     }
     public void concluirMissao(Maxwell maxx){
-        maxx.setMoedaTransporte(maxx.getMoedaTransporte()+ premioTerminarF);
-        maxx.setJoiaDoPoder(maxx.getJoiaDoPoder() + premioTerminarS);
+        maxx.setMoedaTransporte(maxx.getMoedaTransporte()+ premioMoedaTransporte);
+        maxx.setJoiaDoPoder(maxx.getJoiaDoPoder() + premioLimiar);
         maxx.setMissao(null);
         
     }

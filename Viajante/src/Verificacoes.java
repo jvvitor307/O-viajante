@@ -1,5 +1,3 @@
-import java.io.IOException;
-
 public class Verificacoes {
     boolean contain = false;
     Integer escolhaint;
@@ -22,6 +20,11 @@ public class Verificacoes {
             // A conversão falhou
         }
         return escolhaint;
+    }
+    public void verificarlimiar(Maxwell maxx){
+        if(maxx.getPoderAtual() > maxx.getJoiaDoPoder()){
+            maxx.setVivo(false);
+        }
     }
 
 

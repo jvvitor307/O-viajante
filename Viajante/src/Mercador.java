@@ -36,7 +36,7 @@ public class Mercador {
             }
             else if(opcao.equals("N")){
                 maxwell.setMoedaTransporte(maxwell.getMoedaTransporte() + 2);
-                maxwell.setJoiaDoPoder(maxwell.getJoiaDoPoder() - 1);
+                maxwell.setJoiaDoPoder(maxwell.getJoiaDoPoder() - 8);
 
             }
             else{

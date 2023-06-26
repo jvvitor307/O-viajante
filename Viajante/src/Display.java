@@ -81,6 +81,9 @@ public class Display {
     }
     public void aceitarMissao( Maxwell max){
         System.out.println(max.getCidadeAtual().getMissaoCidade().getMissao());
+        System.out.println("Moedas de transporte por aceitar a missão: " + max.getCidadeAtual().getMissaoCidade().getPremioAceitar());
+        System.out.println("Moedas de transporte por  a missão: " + max.getCidadeAtual().getMissaoCidade().getPremioMoedaTransporte());
+        System.out.println("Limiar da joia por aceitar a missão: " + max.getCidadeAtual().getMissaoCidade().getPremioLimiar());
         System.out.println("1- ACEITAR MISSÃO");
         System.out.println("2- RECUSAR MISSÃO");
         escolhaMi = input.nextLine();

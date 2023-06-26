@@ -153,6 +153,11 @@ public class Jogatina  {
             //Verifica se o jogador pode concluir uma missão
             if(max.getMissao() != null){
                max.getMissao().verificarmissao(max); 
+               verificacoes.verificarlimiar(max);
+               if(max.getVivo() == false){
+                    System.out.println("Infelizmente o seu poder ultrapassou o limite e voce morreu!");
+                    break;
+                }
             }
 
             //Mostra o menu principal
@@ -198,6 +203,7 @@ public class Jogatina  {
                     max.setMoedaTransporte(max.getMoedaTransporte() - estradaEscolhida.getCusto());
                     max.AtualizarLimiar(max.getCidadeAtual());
                     if(max.getVivo() == false){
+                        System.out.println("Infelizmente o seu poder ultrapassou o limite e voce morreu!");
                         break;
                     }
 
@@ -209,7 +215,6 @@ public class Jogatina  {
                 
             }
             
-
             //Abandonar Missão
             else if(escolhaM.equals("AM") && contain == true){
                 contain = false;
@@ -220,16 +225,19 @@ public class Jogatina  {
             else if(escolhaM.equals("M") && contain == true){
                 contain = false;
                 display.aceitarMissao(max);
+                verificacoes.verificarlimiar(max);
             }
 
             // Conversa com Mercador
             else if(escolhaM.equals("CM") && contain == true){
                 mercador.conversaMercador(max);
+                verificacoes.verificarlimiar(max);
+                if(max.getVivo() == false){
+                    System.out.println("Infelizmente o seu poder ultrapassou o limite e voce morreu!");
+                    break;
+                }
             }
 
-
-              
-            //inserir conversa do mercador
             else if(escolhaM.equals("SAIR") && contain == true){
                 contain = false;
                 System.out.println("Você saiu do jogo!");
