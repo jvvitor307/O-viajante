@@ -1,8 +1,10 @@
 import java.util.List;
 import java.util.Scanner;
+import java.util.Timer;
 
 public class Jogatina  {
     Scanner input = new Scanner(System.in);
+    Timer timer = new Timer();
     String jogar;
     public void jogarJogo(){
         Cidade Ubud = new Cidade("Ubud", 0, null);
@@ -272,6 +274,11 @@ public class Jogatina  {
         System.out.flush();
     }
     public void jogo(){
+        try {
+            Thread.sleep(3000); // Pausa a execução por 3 segundos (3000 milissegundos)
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         limparTela();
         System.out.println("Bem vindo ao jogo!");
         System.out.println("Deseja iniciar o jogo? (S/N)");
@@ -279,7 +286,14 @@ public class Jogatina  {
         if(jogar.equals("S")){
             jogarJogo();
         }
-        jogo();
+        else if(jogar.equals("N")){
+            return;
+        }
+        else{
+            System.out.println("Digite uma opção válida!");
+            jogo();
+        }
+
 
     }
     

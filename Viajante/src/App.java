@@ -4,9 +4,8 @@ public class App {
         Jogatina jogo = new Jogatina();
         
         jogo.jogo();
-    
-        
-
+        System.out.println("Você saiu do jogo!");
+        System.exit(0);
         
         
     }
