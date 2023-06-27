@@ -63,7 +63,11 @@ public class Maxwell  {
             maxx.setPoderAtual(0);
         }
     }
-    
+    public void verificarMoeadaTransporte(Maxwell maxx){
+        if(maxx.getMoedaTransporte() <= 0){
+            maxx.setMoedaTransporte(0);
+        }
+    }
     
     public missao getMissao() {
         return missao;

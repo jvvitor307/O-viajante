@@ -154,6 +154,7 @@ public class Jogatina  {
             if(max.getMissao() != null){
                max.getMissao().verificarmissao(max); 
                verificacoes.verificarlimiar(max);
+               verificacoes.verificarMoedaTransporte(max);
                if(max.getVivo() == false){
                     System.out.println("Infelizmente o seu poder ultrapassou o limite e voce morreu!");
                     break;
@@ -226,12 +227,14 @@ public class Jogatina  {
                 contain = false;
                 display.aceitarMissao(max);
                 verificacoes.verificarlimiar(max);
+                verificacoes.verificarMoedaTransporte(max);
             }
 
             // Conversa com Mercador
             else if(escolhaM.equals("CM") && contain == true){
                 mercador.conversaMercador(max);
                 verificacoes.verificarlimiar(max);
+                verificacoes.verificarMoedaTransporte(max);
                 if(max.getVivo() == false){
                     System.out.println("Infelizmente o seu poder ultrapassou o limite e voce morreu!");
                     break;

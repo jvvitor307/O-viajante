@@ -26,6 +26,11 @@ public class Verificacoes {
             maxx.setVivo(false);
         }
     }
+    public void verificarMoedaTransporte(Maxwell maxx){
+        if(maxx.getMoedaTransporte() <= 0){
+            maxx.setMoedaTransporte(0);
+        }
+    }
 
 
 }
