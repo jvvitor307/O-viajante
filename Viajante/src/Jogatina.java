@@ -2,6 +2,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Jogatina  {
+    Scanner input = new Scanner(System.in);
+    String jogar;
     public void jogarJogo(){
         Cidade Ubud = new Cidade("Ubud", 0, null);
         Cidade KingdomofLegmod = new Cidade("Kingdom of Legmod", 2, null);
@@ -120,7 +122,7 @@ public class Jogatina  {
         PrincipalityofKasya.addEstrada(ChandirSultanate, 1);
 
 
-        Scanner input = new Scanner(System.in);
+        
         Maxwell max = new Maxwell(Ubud);
         Display display = new Display(max);
         Integer escolhaint;
@@ -170,11 +172,12 @@ public class Jogatina  {
             System.out.println("Escolha uma das opções:");
 
             escolhaM = input.nextLine();
-
+            escolhaM = escolhaM.toUpperCase();
             //Verifica se a escolha é válida
             contain = verificacoes.contain(escolhaM, escolhas);
             // Viajar para outra cidade
             if (escolhaM.equals("V") && contain == true) {
+                limparTela();
                 contain = false;
 
                 // Mostrar as cidades disponíveis para viajar
@@ -215,15 +218,28 @@ public class Jogatina  {
                 }
                 
             }
+
+            //Mostrar objetivo do jogo
+            else if(escolhaM.equals("OJ") && contain == true){
+                limparTela();
+                display.mostraObjetivoJogo();
+            }
+
+            else if(escolhaM.equals("OM") && contain == true){
+                limparTela();
+                display.mostraObjetivoMissao(max);
+            }
             
             //Abandonar Missão
             else if(escolhaM.equals("AM") && contain == true){
+                limparTela();
                 contain = false;
                 display.abandonarmissao( max);
             }
 
             //Aceitar missão 
             else if(escolhaM.equals("M") && contain == true){
+                limparTela();
                 contain = false;
                 display.aceitarMissao(max);
                 verificacoes.verificarlimiar(max);
@@ -232,6 +248,7 @@ public class Jogatina  {
 
             // Conversa com Mercador
             else if(escolhaM.equals("CM") && contain == true){
+                limparTela();
                 mercador.conversaMercador(max);
                 verificacoes.verificarlimiar(max);
                 verificacoes.verificarMoedaTransporte(max);
@@ -242,12 +259,28 @@ public class Jogatina  {
             }
 
             else if(escolhaM.equals("SAIR") && contain == true){
+                limparTela();
                 contain = false;
                 System.out.println("Você saiu do jogo!");
                 break;
             }
             
         }
+    }
+    public void limparTela(){
+        System.out.print("\033[H\033[2J");  
+        System.out.flush();
+    }
+    public void jogo(){
+        limparTela();
+        System.out.println("Bem vindo ao jogo!");
+        System.out.println("Deseja iniciar o jogo? (S/N)");
+        jogar = input.nextLine();
+        if(jogar.equals("S")){
+            jogarJogo();
+        }
+        jogo();
+
     }
     
 }

@@ -6,10 +6,10 @@ public class Display {
     Scanner input = new Scanner(System.in);
     String escolhaMi;
 
-    String[] menu = {"V", "CM", "M", "AM", "SAIR"};
-    String[] menuB = {"V", "CM", "SAIR"};
-    String[] menuCCM = {"V", "CM", "M", "SAIR"};
-    String[] menuCSM = {"V", "CM", "AM", "SAIR"};
+    String[] menu = {"V", "OJ", "OM", "CM", "M", "AM", "SAIR"};
+    String[] menuB = {"V", "OJ", "CM", "SAIR"};
+    String[] menuCCM = {"V", "OJ", "CM", "M", "SAIR"};
+    String[] menuCSM = {"V", "OJ", "OM", "CM", "AM", "SAIR"};
     
     public Display(Maxwell max) {
     }
@@ -24,12 +24,14 @@ public class Display {
 
     public void mostrarMenuB(){
         System.out.println("[ V ] --> Viajar");
+        System.out.println("[ OJ ] --> objetivo do jogo");
         System.out.println("[ CM ] --> Conversar com mercador");
         System.out.println("[ SAIR ] --> Sair do jogo");
     }
 
     public void mostrarMenuCCM(){
         System.out.println("[ V ] --> Viajar");
+        System.out.println("[ OJ ] --> objetivo do jogo");
         System.out.println("[ CM ] --> Conversar com mercador");
         System.out.println("[ M ] --> Missão");
         System.out.println("[ SAIR ] --> Sair do jogo");
@@ -37,6 +39,8 @@ public class Display {
 
     public void mostrarMenuCSM(){
         System.out.println("[ V ] --> Viajar");
+        System.out.println("[ OJ ] --> objetivo do jogo");
+        System.out.println("[ OM ] --> objetivo da missão");
         System.out.println("[ CM ] --> Conversar com mercador");
         System.out.println("[ AM ] --> abandonar misssão atual");
         System.out.println("[ SAIR ] --> Sair do jogo");
@@ -44,6 +48,8 @@ public class Display {
 
     public void mostrarMenu(){
         System.out.println("[ V ] --> Viajar");
+        System.out.println("[ OJ ] --> objetivo do jogo");
+        System.out.println("[ OM ] --> objetivo da missão");
         System.out.println("[ CM ] --> Conversar com mercador");
         System.out.println("[ M ] --> Missão");
         System.out.println("[ AM ] --> abandonar missão atual");
@@ -74,7 +80,7 @@ public class Display {
     public void abandonarmissao( Maxwell max){
         System.out.println("Deseja abandonar Missão Atual? 1/SIM -- 2/NÃO");
         escolhaMi = input.nextLine();
-        if(escolhaMi == "1"){
+        if(escolhaMi.equals("1")){
             max.getMissao().abandonarmissao(max);
         }
 
@@ -84,15 +90,35 @@ public class Display {
         System.out.println("Moedas de transporte por aceitar a missão: " + max.getCidadeAtual().getMissaoCidade().getPremioAceitar());
         System.out.println("Moedas de transporte por  a missão: " + max.getCidadeAtual().getMissaoCidade().getPremioMoedaTransporte());
         System.out.println("Limiar da joia por aceitar a missão: " + max.getCidadeAtual().getMissaoCidade().getPremioLimiar());
-        System.out.println("1- ACEITAR MISSÃO");
-        System.out.println("2- RECUSAR MISSÃO");
-        escolhaMi = input.nextLine();
-        if(escolhaMi == "1"){
-            max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
-            System.out.println("Você aceitou a missão!");
+        if(max.getMissao()!=null){
+            System.out.println("Você já possui uma missão, deseja trocar a missão atual? 1/SIM -- 2/NÃO");
+            escolhaMi = input.nextLine();
+            if(escolhaMi.equals("1")){
+               System.out.println("1- ACEITAR MISSÃO");
+                System.out.println("2- RECUSAR MISSÃO");
+                escolhaMi = input.nextLine();
+                if(escolhaMi.equals("1")){
+                    max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
+                    System.out.println("Você aceitou a missão!");
+                    max.getCidadeAtual().setMissaoCidade(null);
+                }
+                else{
+                    System.out.println("Você recusou a missão!");
+                } 
+            }
         }
         else{
-            System.out.println("Você recusou a missão!");
+            System.out.println("1- ACEITAR MISSÃO");
+            System.out.println("2- RECUSAR MISSÃO");
+            escolhaMi = input.nextLine();
+            if(escolhaMi.equals("1")){
+                max.getCidadeAtual().getMissaoCidade().aceitarMissao(max);
+                System.out.println("Você aceitou a missão!");
+                max.getCidadeAtual().setMissaoCidade(null);
+            }
+            else{
+                System.out.println("Você recusou a missão!");
+            }
         }
     }
 
@@ -110,6 +136,17 @@ public class Display {
         System.out.println("Custo da viagem: " + estradaEscolhida.getCusto());
         max.verificarPoderAtual(max);
         System.out.println();
+    }
+
+    public void mostraObjetivoJogo(){
+        System.out.println("Objetivo do jogo: ");
+        System.out.println("Chegar em Nargumun e se tornar o REI!");
+        System.out.println("Para isso você deve chegar em nargumun com 10 moedas de transporte");
+    }
+
+    public void mostraObjetivoMissao(Maxwell max){
+        System.out.println("Objetivo da missão: ");
+        System.out.println("Chegar em " + max.getCidadeAtual().getMissaoCidade().getMissaodeverdade().getNome() + " e entregar a encomenda");
     }
 
 }

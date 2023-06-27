@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Verificacoes {
     boolean contain = false;
     Integer escolhaint;
@@ -31,6 +33,8 @@ public class Verificacoes {
             maxx.setMoedaTransporte(0);
         }
     }
+
+    
 
 
 }
