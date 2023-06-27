@@ -260,6 +260,7 @@ public class Jogatina  {
                 }
             }
 
+            //sair do jogo
             else if(escolhaM.equals("SAIR") && contain == true){
                 limparTela();
                 contain = false;
@@ -283,6 +284,7 @@ public class Jogatina  {
         System.out.println("Bem vindo ao jogo!");
         System.out.println("Deseja iniciar o jogo? (S/N)");
         jogar = input.nextLine();
+        jogar = jogar.toUpperCase();
         if(jogar.equals("S")){
             jogarJogo();
         }
@@ -293,6 +295,7 @@ public class Jogatina  {
             System.out.println("Digite uma opção válida!");
             jogo();
         }
+        jogo();
 
 
     }

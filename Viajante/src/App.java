@@ -4,7 +4,7 @@ public class App {
         Jogatina jogo = new Jogatina();
         
         jogo.jogo();
-        System.out.println("Você saiu do jogo!");
+        System.out.println("Você fechou o jogo!");
         System.exit(0);
         
         
