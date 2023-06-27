@@ -146,7 +146,7 @@ public class Display {
 
     public void mostraObjetivoMissao(Maxwell max){
         System.out.println("Objetivo da missão: ");
-        System.out.println("Chegar em " + max.getCidadeAtual().getMissaoCidade().getMissaodeverdade().getNome() + " e entregar a encomenda");
+        System.out.println("Chegar em " + max.getMissao().getMissaodeverdade().getNome() + " e entregar a encomenda");
     }
 
 }

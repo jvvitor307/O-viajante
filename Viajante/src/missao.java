@@ -70,6 +70,8 @@ public class missao {
     }
     public void verificarmissao(Maxwell maxx){
         if(cidadeFinal == maxx.getCidadeAtual()){
+            System.out.println("Você concluiu a missão!");
+            System.out.println("Você ganhou " + maxx.getMissao().getPremioMoedaTransporte() + " moedas de transporte e " + maxx.getMissao().getPremioLimiar() + " de limiar de poder!");
             concluirMissao(maxx);
         }
     }
